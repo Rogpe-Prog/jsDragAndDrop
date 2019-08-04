@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <style>
+        body {
+            background-color: lightseagreen;
+        }
+
+        .type div:nth-of-type(1) {
+            background-color: darkgoldenrod;
+            font-size: 2em;
+            border: solid 3px #fff;
+            padding: 10px 30px;
+            margin: 8px;
+        }
+
+        .type div:nth-of-type(2) {
+            background-color: crimson;
+            font-size: 2em;
+            border: solid 3px #fff;
+            padding: 10px 30px;
+            margin: 8px;
+        }
+
+        .type div:nth-of-type(3) {
+            background-color: darkcyan;
+            font-size: 2em;
+            border: solid 3px #fff;
+            padding: 10px 30px;
+            margin: 8px;
+        }
+
+        .type div:nth-of-type(4) {
+            background-color: darkorchid;
+            font-size: 2em;
+            border: solid 3px #fff;
+            padding: 10px 30px;
+            margin: 8px;
+        }
+    </style>
+    <title>Events</title>
+</head>
+
+<body class="type">
+    <div>ClickToMove</div>
+    <div>MoveThat</div>
+    <script>
+        const b = document.querySelectorAll('div')
+        Array.from(b).forEach(r => {
+            r.style.position = 'absolute'
+            r.onfocus = move(r)
+        })
+        function move(a) {
+            a.onmousemove = e => {
+                const item = e.target
+                item.style.cursor = 'move'
+                if (e.buttons) {
+                    item.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                    item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+                }
+            }
+        }
+    </script>
+</body>
